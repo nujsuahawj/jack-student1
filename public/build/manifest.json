@@ -1,0 +1,12 @@
+{
+  "resources/js/app.js": {
+    "file": "assets/app-C1-XIpUa.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "style.css": {
+    "file": "assets/style-CTm_-oQ3.css",
+    "src": "style.css"
+  }
+}

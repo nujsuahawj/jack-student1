@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\DashboardPage;
+use App\Livewire\LoginPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login', LoginPage::class)->name('login');
+
+// Auth routes
+Route::group(['middleware' => 'auth:web'], function () {
+    // User routes
+    Route::get('/', DashboardPage::class)->name('dashboard');
 });
