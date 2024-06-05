@@ -9,7 +9,7 @@ use Livewire\Component;
 class LoginPage extends Component
 {
     #[Layout('layouts.login')]
-    #[Title('Jack - Login')]
+    #[Title('Admin Panel - Login')]
 
     public function render()
     {

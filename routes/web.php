@@ -1,7 +1,13 @@
 <?php
 
+use App\Livewire\CategoryPage;
 use App\Livewire\DashboardPage;
 use App\Livewire\LoginPage;
+use App\Livewire\OderPage;
+use App\Livewire\ProductPage;
+use App\Livewire\SalePage;
+use App\Livewire\ShippingPage;
+use App\Livewire\UserPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +24,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', LoginPage::class)->name('login');
 
 // Auth routes
-Route::group(['middleware' => 'auth:web'], function () {
+// Route::group(['middleware' => 'auth:web'], function () {
     // User routes
     Route::get('/', DashboardPage::class)->name('dashboard');
-});
+    Route::get('/users', UserPage::class)->name('users');
+    Route::get('/categories', CategoryPage::class)->name('categories');
+    Route::get('/products', ProductPage::class)->name('products');
+    Route::get('/orders', OderPage::class)->name('orders');
+    Route::get('/shipping', ShippingPage::class)->name('shipping');
+    Route::get('/sales', SalePage::class)->name('sales');
+// });

@@ -2,7 +2,7 @@
     <!-- Admin Login Form -->
     <form action="#">
         <div class="text-center">
-            <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="72" height="57">
         </div>
         <h1 class="h3 mb-3 fw-normal text-center">ເຂົ້າສູ່ລະບົບ!</h1>
 

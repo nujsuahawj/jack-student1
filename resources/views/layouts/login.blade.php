@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ $title }}</title>
-    <link rel="shortcut icon" loading="lazy" href="http://127.0.0.1:8000/store-img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" loading="lazy" href="https://infypos-demo.nyc3.digitaloceanspaces.com/settings/337/logo-80.png" type="image/x-icon">
 
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
