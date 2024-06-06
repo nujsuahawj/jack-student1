@@ -1,8 +1,8 @@
 <div>
     <!-- Admin Login Form -->
-    <form action="#">
+    <form wire:submit="_checkLoginAdmin">
         <div class="text-center">
-            <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="72" height="57">
+            <img class="mb-4" src="https://infypos-demo.nyc3.digitaloceanspaces.com/settings/337/logo-80.png" alt="logo" width="72" height="57">
         </div>
         <h1 class="h3 mb-3 fw-normal text-center">ເຂົ້າສູ່ລະບົບ!</h1>
 
@@ -24,13 +24,13 @@
 
         <!-- Phone Number Input -->
         <div class="form-floating">
-            <input type="tel" class="form-control" placeholder="ເບີໂທ" />
+            <input wire:model='phone' type="tel" class="form-control" placeholder="ເບີໂທ" />
             <label for="floatingInput">ເບີໂທ</label>
         </div>
 
         <!-- Password Input -->
         <div class="form-floating">
-            <input type="password" class="form-control" placeholder="ລະຫັດ" />
+            <input wire:model='password' type="password" class="form-control" placeholder="ລະຫັດ" />
             <label for="floatingPassword">ລະຫັດ</label>
         </div>
 

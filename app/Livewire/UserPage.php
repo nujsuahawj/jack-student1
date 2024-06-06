@@ -16,4 +16,11 @@ class UserPage extends Component
     {
         return view('livewire.user-page');
     }
+
+    // Method to set role before show form
+    public $roleId;
+    public function _setRole($role)
+    {
+        $this->roleId = $role;
+    }
 }

@@ -154,8 +154,8 @@
     <!-- header tap -->
     <header class="navbar navbar-dark sticky-top bg-white flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 bg-white text-dark" href="#">
-            <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="25" height="25">
-            Admin Panel
+            <img src="{{ auth()->user()->avatar }}" alt="logo" width="25" height="25">
+            {{ auth()->user()->name }}
         </a>
         <button style="border: none;" class="navbar-toggler position-absolute d-md-none collapsed text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-list"></i> <!-- Bootstrap menu icon -->
@@ -167,7 +167,7 @@
             <span data-feather="grid"></span>&nbsp;ຂາຍ (POS)
         </a>
         <input class="form-control form-control-dark w-50 text-white" style="border-radius: 5px;" type="text" aria-label="Search">
-        <a class="btn btn-outline-light btn-sm text-dark bg-light" href="#" style="border-radius: 30px;">
+        <a href="/logout" class="btn btn-outline-light btn-sm text-dark bg-light" href="#" style="border-radius: 30px;">
             <i class="bi bi-power text-danger"></i> <!-- Bootstrap bell icon -->
             ອອກຈາກລະບົບ
         </a>

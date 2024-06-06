@@ -12,7 +12,6 @@ class Category extends Model
     protected $fillable = [
         'id',
         'name',
-        'img',
         'created_at',
         'updated_at'
     ];
@@ -21,7 +20,6 @@ class Category extends Model
     // CREATE TABLE categories (
     //     id int not null AUTO_INCREMENT PRIMARY KEY,
     //     name varchar(255) null,
-    //     img varchar(255) null,
     //     created_at timestamp,
     //     updated_at timestamp
     //   );

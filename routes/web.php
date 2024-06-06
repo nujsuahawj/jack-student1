@@ -8,6 +8,7 @@ use App\Livewire\ProductPage;
 use App\Livewire\SalePage;
 use App\Livewire\ShippingPage;
 use App\Livewire\UserPage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +21,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// logout route
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
 Route::get('/login', LoginPage::class)->name('login');
 
 // Auth routes
-// Route::group(['middleware' => 'auth:web'], function () {
+Route::group(['middleware' => 'auth:web'], function () {
     // User routes
     Route::get('/', DashboardPage::class)->name('dashboard');
     Route::get('/users', UserPage::class)->name('users');
@@ -33,4 +38,4 @@ Route::get('/login', LoginPage::class)->name('login');
     Route::get('/orders', OderPage::class)->name('orders');
     Route::get('/shipping', ShippingPage::class)->name('shipping');
     Route::get('/sales', SalePage::class)->name('sales');
-// });
+});
