@@ -47,7 +47,6 @@
                                         @foreach ($categories as $item)
                                         <option value="{{ $item->name }}">{{ $item->name }}</option>
                                         @endforeach
-
                                     </select>
                                 </div>
                                 <div class="col-md-12">

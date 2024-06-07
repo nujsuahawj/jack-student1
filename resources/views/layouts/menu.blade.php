@@ -40,16 +40,17 @@
                 @endif
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('orders') ? 'active' : '' }}" href="/orders" wire:navigate>
+                @if (Request::is('orders/*'))
+                <a class="nav-link active" href="/orders" wire:navigate>
                     <span data-feather="shopping-cart"></span>
                     ສັ່ງຊື້+ນຳເຂົ້າ
                 </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Request::is('shipping') ? 'active' : '' }}" href="/shipping" wire:navigate>
-                    <span data-feather="truck"></span>
-                    ຈັດສົ່ງສິນຄ້າ
-                </a>
+                @else
+                    <a class="nav-link {{ Request::is('orders') ? 'active' : '' }}" href="/orders" wire:navigate>
+                        <span data-feather="shopping-cart"></span>
+                        ສັ່ງຊື້+ນຳເຂົ້າ
+                    </a>
+                @endif
             </li>
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

@@ -14,6 +14,7 @@
                             <i class="bi bi-funnel"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#" wire:click='_funnel(0)'>ທັງໝົດ</a></li>
                             @foreach ($getAllCategory as $item)
                             <li><a class="dropdown-item" href="#" wire:click='_funnel({{ $item->name }})'>{{ $item->name }}</a></li>
                             @endforeach

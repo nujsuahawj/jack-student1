@@ -2,16 +2,53 @@
 
     <!-- Top of dashboard -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-        <h4>
-            ຈັດການຂໍ້ມູນການສັ່ງຊື້ແລະນຳເຂົ້າ
-        </h4>
+
+        <div class="text-start">
+            <h4>ຈັດການຂໍ້ມູນການສັ່ງຊື້+ນຳເຂົ້າ</h4>
+        </div>
+        <div class="text-none">
+            <div class="row gx-2 gy-2 mb-2">
+                <div class="col-3">
+                    <div class="dropdown">
+                        <button style="border-radius: 30px;" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-funnel"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#" wire:click='_funnel(0)'>ທັງໝົດ</a></li>
+                            @foreach ($supplier as $item)
+                            <li><a class="dropdown-item" href="#" wire:click='_funnel({{ $item->name }})'>{{ $item->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="dropdown">
+                        <button style="border-radius: 30px;" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-calendar4-week"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">ທັງໝົດ</a></li>
+                            <li><a class="dropdown-item" href="#">ມື້ນີ້</a></li>
+                            <li><a class="dropdown-item" href="#">ອາທິດນີ້</a></li>
+                            <li><a class="dropdown-item" href="#">ເດືອນນີ້</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <a href="/orders/create" wire:navigate class="btn btn-primary" style="border-radius: 30px;">
+                        <i class="bi bi-plus-circle"></i>
+                        &nbsp;ເພີ່ມ <span>ສິນຄ້າ</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Dashboard content row -->
     <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
 
         <!-- Column 1 -->
-        <div class="col-xl-4">
+        <div class="col-xl-12">
             <div class="card h-md-100">
                 <div class="card-header bg-white">
                     <!-- Search input -->
@@ -23,101 +60,88 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <!-- Table for withdraw money data -->
+                    <!-- Users table -->
                     <table class="table table-responsive table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">ສິນຄ້າ</th>
-                                <th scope="col">ລາຄາ</th>
+                                <th scope="col">ລະຫັດ</th>
+                                <th scope="col">ຜູ້ສະໜອງ</th>
+                                <th scope="col">ສະຖານະ</th>
+                                <th scope="col">ຈຳນວນ</th>
+                                <th scope="col">ເປັນເງິນ</th>
+                                <th scope="col">ຜູ້ສັ່ງຊື້</th>
+                                <th scope="col">ເວລາເພີ່ມ</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody class="animate__animated animate__fadeIn">
-                            <!-- Loop through withdraw money data -->
-                            @foreach ($dataList as $item)
+                            @foreach ($orderLog as $item)
                             <tr>
-                                <!-- User information -->
                                 <td>
                                     {{ $item->id }}
                                 </td>
                                 <td>
-                                    {{ number_format($item->price_order) }} ₭
+                                    {{ $item->supplier }}
                                 </td>
-                                <td class="text-center justify-center">
-                                    <i class="bi bi-cart4 text-primary" style="cursor: pointer;"></i>
+                                <td>
+                                    @if ($item->status == 1)
+                                    <span class="badge bg-warning">ລໍຖ້າ</span>
+                                    @elseif ($item->status == 2)
+                                    <span class="badge bg-success">ສຳເລັດ</span>
+                                    @else
+                                    <span class="badge bg-danger">ຍົກເລີກ</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ number_format($item->total_qty) }} item
+                                </td>
+                                <td>
+                                    {{ number_format($item->total_price) }} ₭
+                                </td>
+                                <td>
+                                    {{ $item->created_by }}
+                                </td>
+                                <td>
+                                    <span class="text-primary">{{ $item->created_at }}</span>
+                                </td>
+                                <td>
+                                    <a href="#" wire:navigate style="text-decoration: none; color: inherit;">
+                                        <i class="bi bi-pencil-square text-primary" style="cursor: pointer;"></i>
+                                    </a>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a href="#" wire:click="confirmClick" wire:confirm="ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການຍົກເລີກການສັ່ງຊື້ນີ້?" style="text-decoration: none; color: inherit;">
+                                        <i class="bi bi-trash text-danger" style="cursor: pointer;"></i>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <!-- Pagination links -->
-                    {{ $dataList->links() }}
+                    {{ $orderLog->links() }}
                     <!-- End of table -->
                 </div>
             </div>
             <!-- End of card -->
         </div>
-
-        <!-- Column 2 -->
-        <div class="col-xl-8">
-            <!-- Display payment confirmation if transaction ID exists -->
-            <div class="card h-md-100">
-                <div class="card-body">
-                    <div class="text-center">
-                        <h5 class="card-title">
-                            <!-- Display form to add data -->
-                            <p>
-                                ລາຍລະອຽດການສັ່ງຊື້ສິນຄ້າ
-                            </p>
-                        </h5>
-                        <table class="table table-responsive table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ສິນຄ້າ</th>
-                                    <th scope="col">ລາຄາ</th>
-                                    <th scope="col">Stock</th>
-                                    <th scope="col">ຈຳນວນ</th>
-                                    <th scope="col">ລາຄາລວມ</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="animate__animated animate__fadeIn">
-                                <tr>
-                                    <!-- User information -->
-                                    <td>
-                                        345345345
-                                    </td>
-                                    <td>
-                                        3453434534534
-                                    </td>
-                                    <td>
-                                        10
-                                    </td>
-                                    <td>
-                                        <div class="text-end">
-                                            <div class="input-group input-group-sm">
-                                                <button class="btn btn-primary" type="button" id="subtract-button"><i class="bi bi-dash"></i></button>
-                                                <input type="number" value="10" style="max-width: 60px;" class="form-control text-center" aria-label="User Input" aria-describedby="subtract-button add-button">
-                                                <button class="btn btn-primary" type="button" id="add-button"><i class="bi bi-plus"></i></button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        345345345345
-                                    </td>
-                                    <td>
-                                        <i class="bi bi-trash text-danger" style="cursor: pointer;"></i>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- End of card -->
-        </div>
-
     </div>
-    <!-- End of dashboard content row -->
+    <!-- End of row -->
 
 </div>
+<!--script -->
+<script>
+    // Sound effect
+    var audioTrue = new Audio('https://hmong56.online/public/store-img/audio-true.mp3');
+    var audioFalse = new Audio('https://hmong56.online/public/store-img/audio-false.mp3');
+    // Alert success
+    window.addEventListener('success', event => {
+        // dispay sound true
+        audioTrue.play();
+    });
+    // Alert error
+    window.addEventListener('error', event => {
+        // dispay sound false
+        audioFalse.play();
+    });
+
+</script>
