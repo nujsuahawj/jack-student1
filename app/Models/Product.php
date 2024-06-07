@@ -16,7 +16,7 @@ class Product extends Model
         'price',
         'qty',
         'category_name',
-        'unit_name',
+        'description',
         'created_at',
         'updated_at'
     ];
@@ -29,7 +29,7 @@ class Product extends Model
     //     price int null,
     //     qty int null,
     //     category_name varchar(255) null,
-    //     unit_name varchar(255) null,
+    //     description varchar(255) null,
     //     created_at timestamp,
     //     updated_at timestamp
     //   );

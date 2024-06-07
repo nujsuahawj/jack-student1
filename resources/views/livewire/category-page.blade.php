@@ -1,9 +1,9 @@
-<div class="animate__animated animate__fadeIn">
+<div>
 
     <!-- Top of dashboard -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h4>
-            Category Management
+            ຈັດການຂໍ້ມູນປະເພດສິນຄ້າ
         </h4>
     </div>
 
@@ -62,7 +62,7 @@
                 </div>
                 <div class="card-body">
                     <!-- Table for withdraw money data -->
-                    <table class="table table-responsive table-hover custom-table">
+                    <table class="table table-responsive table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">ປະເພດສິນຄ້າ</th>
@@ -70,7 +70,7 @@
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="animate__animated animate__fadeIn">
                             <!-- Loop through withdraw money data -->
                             @foreach ($categoryList as $item)
                             <tr>
@@ -81,8 +81,12 @@
                                     {{ $allProducts->where('category_name', $item->name)->count()}}
                                 </td>
                                 <td>
-                                    <i wire:click='_editeCategory({{ $item->id }})' class="bi bi-pencil-square text-primary" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;
-                                    <i class="bi bi-trash text-danger"></i>
+                                    <i wire:click='_editeCategory({{ $item->id }})' class="bi bi-pencil-square text-primary" style="cursor: pointer;"></i>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <a href="#" wire:click="confirmClick" wire:confirm="ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນນີ້?"
+                                        style="text-decoration: none; color: inherit;">
+                                        <i class="bi bi-trash text-danger"></i>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach

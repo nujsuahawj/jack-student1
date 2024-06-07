@@ -96,4 +96,12 @@ class CategoryPage extends Component
         // return back to the same page
         return redirect()->back();
     }
+
+    // Method to delete category data
+    public function confirmClick()
+    {
+        toastr()->success('ລົບຂໍ້ມູນສຳເລັດແລ້ວ');
+        $this->dispatch('success');
+        return redirect()->back();
+    }
 }

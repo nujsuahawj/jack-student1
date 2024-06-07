@@ -142,10 +142,6 @@
         }
 
         /* my css code here.. */
-        .custom-table tbody tr:hover {
-            background-color: var(--bs-primary);
-            color: white; /* Adjust text color for better contrast, if necessary */
-        }
     </style>
 </head>
 
