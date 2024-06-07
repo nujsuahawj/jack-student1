@@ -29,14 +29,18 @@
                                     <input wire:model='name' type="text" class="form-control" id="inputName" placeholder="ຊື່ລາຍການສິນຄ້າ">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPrice" class="form-label">ລາຄາ <sub class="text-danger">*@error('price'){{ $message }}@enderror</sub></label>
-                                    <input wire:model='price' type="number" class="form-control" id="inputPrice" placeholder="ລາຄາສິນຄ້າ">
+                                    <label for="inputPrice" class="form-label">ລາຄາຊື້ <sub class="text-danger">*@error('price_order'){{ $message }}@enderror</sub></label>
+                                    <input wire:model='price_order' type="number" class="form-control" id="inputPrice" placeholder="ລາຄາສິນຄ້າ">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <label for="inputQty" class="form-label">ລາຄາຂາຍ <sub class="text-danger">*@error('price_sale'){{ $message }}@enderror</sub></label>
+                                    <input wire:model='price_sale' type="number" class="form-control" id="inputQty">
+                                </div>
+                                <div class="col-md-4">
                                     <label for="inputQty" class="form-label">ຈຳນວນ Stock <sub class="text-danger">*@error('qty'){{ $message }}@enderror</sub></label>
                                     <input wire:model='qty' type="number" class="form-control" id="inputQty">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <label for="inputState" class="form-label">ປະເພດສິນຄ້າ <sub class="text-danger">*@error('category_name'){{ $message }}@enderror</sub></label>
                                     <select wire:model='category_name' id="inputState" class="form-select">
                                         <option selected>ເລືອກ...</option>

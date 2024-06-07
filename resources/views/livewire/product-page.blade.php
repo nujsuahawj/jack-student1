@@ -31,7 +31,7 @@
     </div>
 
     <!-- Dashboard content row -->
-    <div class="row g-5 g-xl-10 mb-5 mb-xl-10 animate__animated animate__fadeIn">
+    <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
 
         <!-- Column 1 -->
         <div class="col-xl-12">
@@ -54,7 +54,8 @@
                                 <th scope="col">ຊື່ສິນຄ້າ</th>
                                 <th scope="col">ລະຫັດ</th>
                                 <th scope="col">ປະເພດ</th>
-                                <th scope="col">ລາຄາ</th>
+                                <th scope="col">ລາຄາຊື້</th>
+                                <th scope="col">ລາຄາຂາຍ</th>
                                 <th scope="col">ຈຳນວນ</th>
                                 <th scope="col">ເວລາເພີ່ມ</th>
                                 <th scope="col">Action</th>
@@ -77,7 +78,10 @@
                                     <span class="badge bg-info">{{ $item->name }}</span>
                                 </td>
                                 <td>
-                                    {{ number_format($item->price) }} ກີບ
+                                    {{ number_format($item->price_order) }} ₭
+                                </td>
+                                <td>
+                                    {{ number_format($item->price_sale) }} ₭
                                 </td>
                                 <td>
                                     @if ($item->qty >= 5)

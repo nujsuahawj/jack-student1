@@ -20,9 +20,9 @@ class CategoryPage extends Component
     public function render()
     {
         if ($this->search != '') {
-            $categoryList = ModelsCategory::where('name', 'like', '%' . $this->search . '%')->orderBy('id', 'desc')->paginate(10);
+            $categoryList = ModelsCategory::where('name', 'like', '%' . $this->search . '%')->orderBy('id', 'desc')->paginate(15);
         } else {
-            $categoryList = ModelsCategory::orderBy('id', 'desc')->paginate(10);
+            $categoryList = ModelsCategory::orderBy('id', 'desc')->paginate(15);
         }
         $allProducts = ModelProduct::all();
         return view('livewire.category-page', [

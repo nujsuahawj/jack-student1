@@ -22,21 +22,23 @@ class ProductCreatePage extends Component
     }
 
     // Method to create a new product
-    public $name, $img, $price, $qty, $category_name, $description;
+    public $name, $img, $price_order,$price_sale, $qty, $category_name, $description;
     public function _createProduct()
     {
         // Validate the input fields
         $this->validate([
             'name' => 'required',
             'img' => 'required',
-            'price' => 'required',
+            'price_order' => 'required',
+            'price_sale' => 'required',
             'qty' => 'required',
             'category_name' => 'required',
             'description' => 'required',
         ], [
             'name.required' => 'ປ້ອນຊື່ສິນຄ້າ.',
             'img.required' => 'ເລືອກຮູບສິນຄ້າ.',
-            'price.required' => 'ປ້ອນລາຄາສິນຄ້າ.',
+            'price_order.required' => 'ປ້ອນລາຄາສິນຄ້າ.',
+            'price_sale.required' => 'ປ້ອນລາຄາສິນຄ້າ.',
             'qty.required' => 'ປ້ອນຈຳນວນສິນຄ້າ.',
             'category_name.required' => 'ເລືອກປະເພດສິນຄ້າ.',
             'description.required' => 'ລາຍລະອຽດສິນຄ້າ.',
@@ -52,7 +54,8 @@ class ProductCreatePage extends Component
         $data->id = rand(100000, 999900); // random number (6 digits)
         $data->name = $this->name;
         $data->img = $imageUrl;
-        $data->price = $this->price;
+        $data->price_order = $this->price_order;
+        $data->price_sale = $this->price_sale;
         $data->qty = $this->qty;
         $data->category_name = $this->category_name;
         $data->description = $this->description;
@@ -70,7 +73,8 @@ class ProductCreatePage extends Component
         $this->reset(
             'name',
             'img',
-            'price',
+            'price_order',
+            'price_sale',
             'qty',
             'category_name',
             'description'

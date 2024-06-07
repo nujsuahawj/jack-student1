@@ -16,14 +16,15 @@ class ProductEditePage extends Component
     #[Title('Admin Panel - Products')]
 
     // Method executed when the component is loaded
-    public $setId, $name, $img, $price, $qty, $category_name, $description;
+    public $setId, $name, $img, $price_order, $price_sale, $qty, $category_name, $description;
     public function mount($id)
     {
         // get product data by id
         $product = ProductModel::find($id);
         $this->name = $product->name;
         $this->img = $product->img;
-        $this->price = $product->price;
+        $this->price_order = $product->price_order;
+        $this->price_sale = $product->price_sale;
         $this->qty = $product->qty;
         $this->category_name = $product->category_name;
         $this->description = $product->description;
@@ -44,14 +45,16 @@ class ProductEditePage extends Component
         $this->validate([
             'name' => 'required',
             'img' => 'required',
-            'price' => 'required',
+            'price_order' => 'required',
+            'price_sale' => 'required',
             'qty' => 'required',
             'category_name' => 'required',
             'description' => 'required',
         ], [
             'name.required' => 'ປ້ອນຊື່ສິນຄ້າ.',
             'img.required' => 'ເລືອກຮູບສິນຄ້າ.',
-            'price.required' => 'ປ້ອນລາຄາສິນຄ້າ.',
+            'price_order.required' => 'ປ້ອນລາຄາສິນຄ້າ.',
+            'price_sale.required' => 'ປ້ອນລາຄາສິນຄ້າ.',
             'qty.required' => 'ປ້ອນຈຳນວນສິນຄ້າ.',
             'category_name.required' => 'ເລືອກປະເພດສິນຄ້າ.',
             'description.required' => 'ລາຍລະອຽດສິນຄ້າ.',
@@ -72,7 +75,8 @@ class ProductEditePage extends Component
         ProductModel::where('id', $this->setId)->update([
             'name' => $this->name,
             'img' => $imageUrl,
-            'price' => $this->price,
+            'price_order' => $this->price_order,
+            'price_sale' => $this->price_sale,
             'qty' => $this->qty,
             'category_name' => $this->category_name,
             'description' => $this->description,
@@ -89,7 +93,8 @@ class ProductEditePage extends Component
         $this->reset(
             'name',
             'img',
-            'price',
+            'price_order',
+            'price_sale',
             'qty',
             'category_name',
             'description'
