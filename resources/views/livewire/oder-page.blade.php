@@ -16,7 +16,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#" wire:click='_funnel(0)'>ທັງໝົດ</a></li>
                             @foreach ($supplier as $item)
-                            <li><a class="dropdown-item" href="#" wire:click='_funnel({{ $item->name }})'>{{ $item->name }}</a></li>
+                            <li><a class="dropdown-item" href="#" wire:click="_funnel('{{ $item->name }}')">{{ $item->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>

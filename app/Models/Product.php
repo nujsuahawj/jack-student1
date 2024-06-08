@@ -57,4 +57,28 @@ class Product extends Model
     //     created_at timestamp,
     //     updated_at timestamp
     //   );
+
+    // sale_log command
+    // CREATE TABLE sale_log (
+    //     id int not null AUTO_INCREMENT PRIMARY KEY,
+    //     created_by varchar(255) null,
+    //     customer_name varchar(255) null,
+    //     customer_phone varchar(255) null,
+    //     status int not null, // 0: waitingAdd, 1: success
+    //     total_qty int not null,
+    //     total_price int not null,
+    //     payment varchar(255) null,
+    //     created_at timestamp,
+    //     updated_at timestamp
+    //   );
+
+    // sale_log_item command
+    // CREATE TABLE sale_log_item (
+    //     id int not null AUTO_INCREMENT PRIMARY KEY,
+    //     sale_log_id int not null,
+    //     p_id int not null,
+    //     p_qty int not null,
+    //     created_at timestamp,
+    //     updated_at timestamp
+    //   );
 }
