@@ -105,9 +105,19 @@
                                     <span class="text-primary">{{ $item->created_at }}</span>
                                 </td>
                                 <td>
-                                    <a href="#" wire:navigate style="text-decoration: none; color: inherit;">
-                                        <i class="bi bi-pencil-square text-primary" style="cursor: pointer;"></i>
-                                    </a>
+                                    @if ($item->status == 1)
+                                        <a href="/orders/edite/{{ $item->id }}" wire:navigate style="text-decoration: none; color: inherit;">
+                                            <i class="bi bi-pencil-square text-primary" style="cursor: pointer;"></i>
+                                        </a>
+                                    @elseif ($item->status == 2  || $item->status == 3)
+                                        <a href="/orders/view/{{ $item->id }}" wire:navigate style="text-decoration: none; color: inherit;">
+                                            <i class="bi bi-eye text-success" style="cursor: pointer;"></i>
+                                        </a>
+                                    @else
+                                        <a href="#" style="text-decoration: none; color: inherit;">
+                                            <i class="bi bi-pencil-square text-primary" style="cursor: pointer;"></i>
+                                        </a>
+                                    @endif
                                     &nbsp;&nbsp;&nbsp;
                                     <a href="#" wire:click="confirmClick" wire:confirm="ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການຍົກເລີກການສັ່ງຊື້ນີ້?" style="text-decoration: none; color: inherit;">
                                         <i class="bi bi-trash text-danger" style="cursor: pointer;"></i>

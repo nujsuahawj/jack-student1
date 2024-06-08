@@ -5,6 +5,8 @@ use App\Livewire\DashboardPage;
 use App\Livewire\LoginPage;
 use App\Livewire\OderPage;
 use App\Livewire\OrderCreatePage;
+use App\Livewire\OrderEditePage;
+use App\Livewire\OrderViewPage;
 use App\Livewire\ProductCreatePage;
 use App\Livewire\ProductEditePage;
 use App\Livewire\ProductPage;
@@ -45,5 +47,7 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/products/edite/{id}', ProductEditePage::class)->name('products-edite');
     Route::get('/orders', OderPage::class)->name('orders');
     Route::get('/orders/create', OrderCreatePage::class)->name('orders-create');
+    Route::get('/orders/edite/{id}', OrderEditePage::class)->name('orders-edite');
+    Route::get('/orders/view/{id}', OrderViewPage::class)->name('orders-view');
     Route::get('/sales', SalePage::class)->name('sales');
 });
