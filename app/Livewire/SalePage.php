@@ -272,6 +272,21 @@ class SalePage extends Component
                 'payment' => $this->setPayType,
             ]);
 
+            // update product qty or stock
+            $allSaleLog = DB::table('sale_log_item')->where('sale_log_id', $saleLog->id)->get();
+            foreach ($allSaleLog as $item) {
+                $getProductQty = ProductModel::where('id', $item->p_id)->first();
+                $newQty = $getProductQty->qty - $item->p_qty;
+                // check if qty < 0 change to 0
+                if ($newQty < 0) {
+                    $newQty = 0;
+                }
+                // update product qty
+                ProductModel::where('id', $item->p_id)->update([
+                    'qty' => $newQty,
+                ]);
+            }
+
             // toast sound
             $this->dispatch('success');
 

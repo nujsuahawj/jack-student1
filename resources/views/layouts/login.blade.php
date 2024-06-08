@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
     <!-- Vite compiled -->
-    <link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/style-CTm_-oQ3.css" data-navigate-track="reload" />
+    <link rel="stylesheet" href="http://127.0.0.1:8000/build/assets/style-DV3X1tBU.css" data-navigate-track="reload" />
     <script type="module" src="http://127.0.0.1:8000/build/assets/app-C1-XIpUa.js" data-navigate-track="reload"></script>
 
     <!-- Livewire styles -->

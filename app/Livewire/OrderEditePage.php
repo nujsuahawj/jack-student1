@@ -222,6 +222,14 @@ class OrderEditePage extends Component
                 'updated_at' => now('Asia/Vientiane'),
             ]);
 
+            // update product qty or stock
+            $orderLogItem = DB::table('order_log_item')->where('order_log_id', $orderLog->id)->get();
+            foreach ($orderLogItem as $item) {
+                $product = ProductModel::where('id', $item->p_id)->first();
+                $product->qty = $product->qty + $item->p_qty;
+                $product->save();
+            }
+
             // toast sound
             $this->dispatch('success');
 

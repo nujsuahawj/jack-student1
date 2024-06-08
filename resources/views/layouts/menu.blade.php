@@ -54,37 +54,13 @@
             </li>
         </ul>
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>ລາຍງານຂໍູ້ມນ</span>
+            <span>ລາຍງານຂໍູ້ມນທັງໝົດ</span>
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link {{ Request::is('reports') ? 'active' : '' }}" href="/reports" wire:navigate>
                     <span data-feather="file-text"></span>
-                    ປະເພດສິນຄ້າ
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    ສິນຄ້າ
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    ສັ່ງຊື້+ນຳເຂົ້າ
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    ຂາຍສິນຄ້າ
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text"></span>
-                    ລາຍຮັບ+ລາຍຈ່າຍ
+                    ລາຍງານ
                 </a>
             </li>
         </ul>

@@ -163,13 +163,13 @@
             <div class="card h-100" style="margin-top: 0.5rem;">
                 <div class="gx-2 gy-2 d-flex pt-2" style="margin-left: 0.5rem;">
                     @if ($category == 0)
-                    <button wire:click='_funnel(0)' type="button" class="btn btn-primary">ທັງໝົດ</button>
+                    <button wire:click='_funnel(0)' type="button" class="btn btn-primary btn-sm">ທັງໝົດ</button>
                     @foreach ($categories as $item)
-                    <button wire:click="_funnel('{{ $item->name }}')" type="button" class="btn btn-light" style="margin-left: 0.5rem;">{{ $item->name }}</button>
+                    <button wire:click="_funnel('{{ $item->name }}')" type="button" class="btn btn-light btn-sm" style="margin-left: 0.5rem;">{{ $item->name }}</button>
                     @endforeach
                     @else
-                    <button wire:click='_funnel(0)' type="button" class="btn btn-light">ທັງໝົດ</button>
-                    <button wire:click="_funnel('{{ $category }}')" type="button" class="btn btn-primary" style="margin-left: 0.5rem;">{{ $category }}</button>
+                    <button wire:click='_funnel(0)' type="button" class="btn btn-light btn-sm">ທັງໝົດ</button>
+                    <button wire:click="_funnel('{{ $category }}')" type="button" class="btn btn-primary btn-sm" style="margin-left: 0.5rem;">{{ $category }}</button>
                     @endif
                 </div>
                 <div class="row gx-1 gy-1 d-flex pt-2 text-center justify-center">
