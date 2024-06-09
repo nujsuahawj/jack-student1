@@ -28,7 +28,7 @@ class DashboardPage extends Component
             ->orderBy('total_qty', 'desc')
             ->limit(10)
             ->get();
-        $stockProductSale = ProductModel::where('qty', '<', 2)
+        $stockProductSale = ProductModel::where('qty', '<', 5)
             ->orderBy('qty', 'asc')
             ->limit(10)
             ->get();

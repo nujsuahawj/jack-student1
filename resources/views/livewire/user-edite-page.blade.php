@@ -26,7 +26,7 @@
                             <div class="col-3 mb-2">
                                 <div class="card position-relative">
                                     <!-- admin -->
-                                    <img wire:click="_setRole(1)" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAMjQfOnVjs8CCD4-gLzDvZ0L6npZIUqTd1Q&s" class="card-img-top" alt="image" wire:loading.attr="disabled">
+                                    <img wire:click="_setRole(1)" loading="lazy" src="http://127.0.0.1:8000/store-img/ad.png" class="card-img-top" alt="image" wire:loading.attr="disabled">
 
                                     <!-- Bootstrap Icon -->
                                     @if ($roleId == 1)
@@ -42,7 +42,7 @@
                             <div class="col-3 mb-2">
                                 <div class="card position-relative">
                                     <!-- employee -->
-                                    <img wire:click="_setRole(2)" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAMjQfOnVjs8CCD4-gLzDvZ0L6npZIUqTd1Q&s" class="card-img-top" alt="image" wire:loading.attr="disabled">
+                                    <img wire:click="_setRole(2)" loading="lazy" src="http://127.0.0.1:8000/store-img/em.png" class="card-img-top" alt="image" wire:loading.attr="disabled">
 
                                     <!-- Bootstrap Icon -->
                                     @if ($roleId == 2)
@@ -58,7 +58,7 @@
                             <div class="col-3 mb-2">
                                 <div class="card position-relative">
                                     <!-- supplier -->
-                                    <img wire:click="_setRole(3)" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAMjQfOnVjs8CCD4-gLzDvZ0L6npZIUqTd1Q&s" class="card-img-top" alt="image" wire:loading.attr="disabled">
+                                    <img wire:click="_setRole(3)" loading="lazy" src="http://127.0.0.1:8000/store-img/sp.png" class="card-img-top" alt="image" wire:loading.attr="disabled">
 
                                     <!-- Bootstrap Icon -->
                                     @if ($roleId == 3)
@@ -74,7 +74,7 @@
                             <div class="col-3 mb-2">
                                 <div class="card position-relative">
                                     <!-- customer -->
-                                    <img wire:click="_setRole(4)" loading="lazy" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAMjQfOnVjs8CCD4-gLzDvZ0L6npZIUqTd1Q&s" class="card-img-top" alt="image" wire:loading.attr="disabled">
+                                    <img wire:click="_setRole(4)" loading="lazy" src="http://127.0.0.1:8000/store-img/cm.png" class="card-img-top" alt="image" wire:loading.attr="disabled">
 
                                     <!-- Bootstrap Icon -->
                                     @if ($roleId == 4)
