@@ -19,13 +19,15 @@ class UserPage extends Component
     public function render()
     {
         if ($this->search) {
-            $userDataList = ModelsUser::where('name', 'like', '%' . $this->search . '%')->orderBy('id', 'desc')->paginate(10);
+            $userDataList = ModelsUser::where('name', 'like', '%' . $this->search . '%')->whereIn('role', [1, 2])->orderBy('id', 'desc')->paginate(10);
         } else {
             // check if role is set or not
             if ($this->rolse != 0) {
                 $userDataList = ModelsUser::where('role', $this->rolse)->orderBy('id', 'desc')->paginate(10);
             } else {
-                $userDataList = ModelsUser::orderBy('id', 'desc')->paginate(10);
+                $userDataList = ModelsUser::whereIn('role', [1, 2])
+                    ->orderBy('id', 'desc')
+                    ->paginate(10);
             }
         }
         return view('livewire.user-page',
@@ -42,8 +44,12 @@ class UserPage extends Component
     }
 
     // Method to delete user data
-    public function confirmClick()
+    public function confirmClick($id)
     {
+        // check id and delete user data set status to 0
+        $userData = ModelsUser::find($id);
+        $userData->status = 0;
+        $userData->save();
         toastr()->success('ລົບຂໍ້ມູນສຳເລັດແລ້ວ');
         $this->dispatch('success');
         return redirect()->back();

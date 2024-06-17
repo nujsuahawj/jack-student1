@@ -17,7 +17,7 @@ class UserEditePage extends Component
     // Method executed when the component is loaded
 
     public $userId, $roleId, $addPassword;
-    public $addName, $addPhone, $Addavatar;
+    public $addName, $addPhone, $Addavatar, $addVillage, $addDistrict, $addCity, $SetStatus;
     public function mount($id)
     {
         // get user data by id
@@ -28,6 +28,10 @@ class UserEditePage extends Component
         $this->addPassword = $user->password;
         $this->roleId = $user->role;
         $this->Addavatar = $user->avatar;
+        $this->addVillage = $user->village;
+        $this->addDistrict = $user->district;
+        $this->addCity = $user->city;
+        $this->SetStatus = $user->status;
     }
 
     // Render view
@@ -55,12 +59,18 @@ class UserEditePage extends Component
             'addPassword' => 'required',
             'roleId' => 'required',
             'Addavatar' => 'required',
+            'addVillage' => 'required',
+            'addDistrict' => 'required',
+            'addCity' => 'required',
         ], [
             'addName.required' => 'ປ້ອນຊື່',
             'addPhone.required' => 'ປ້ອນເບີໂທ',
             'addPassword.required' => 'ປ້ອນລະຫັດຜ່ານ',
             'roleId.required' => 'ເລືອກສິດທິຜູ້ໃຊ້',
             'Addavatar.required' => 'ເລືອກຮູບພາບ',
+            'addVillage.required' => 'ປ້ອນບ້ານ',
+            'addDistrict.required' => 'ປ້ອນເມືອງ',
+            'addCity.required' => 'ປ້ອນແຂວງ',
         ]);
 
         // Check if the user has selected a new image or old image
@@ -81,6 +91,10 @@ class UserEditePage extends Component
         $data->password = bcrypt($this->addPassword);
         $data->role = $this->roleId;
         $data->avatar = $imageUrl;
+        $data->village = $this->addVillage;
+        $data->district = $this->addDistrict;
+        $data->city = $this->addCity;
+        $data->status = $this->SetStatus;
         $data->save();
 
         // show a success sound

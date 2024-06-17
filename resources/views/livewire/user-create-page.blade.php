@@ -54,38 +54,6 @@
                                     @endif
                                 </div>
                             </div>
-                            <!-- supplier -->
-                            <div class="col-3 mb-2">
-                                <div class="card position-relative">
-                                    <!-- supplier -->
-                                    <img wire:click="_setRole(3)" loading="lazy" src="http://127.0.0.1:8000/store-img/sp.png" class="card-img-top" alt="image" wire:loading.attr="disabled">
-
-                                    <!-- Bootstrap Icon -->
-                                    @if ($roleId == 3)
-                                    <div class="position-absolute top-0 start-0 mt-2 ms-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle text-primary" viewBox="0 0 16 16">
-                                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM6.56 11.697l-2.93-2.93a.75.75 0 1 1 1.06-1.06l2.124 2.125 4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0z" />
-                                        </svg>
-                                    </div>
-                                    @endif
-                                </div>
-                            </div>
-                            <!-- customer -->
-                            <div class="col-3 mb-2">
-                                <div class="card position-relative">
-                                    <!-- customer -->
-                                    <img wire:click="_setRole(4)" loading="lazy" src="http://127.0.0.1:8000/store-img/cm.png" class="card-img-top" alt="image" wire:loading.attr="disabled">
-
-                                    <!-- Bootstrap Icon -->
-                                    @if ($roleId == 4)
-                                    <div class="position-absolute top-0 start-0 mt-2 ms-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle text-primary" viewBox="0 0 16 16">
-                                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM6.56 11.697l-2.93-2.93a.75.75 0 1 1 1.06-1.06l2.124 2.125 4.97-4.97a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0z" />
-                                        </svg>
-                                    </div>
-                                    @endif
-                                </div>
-                            </div>
                         </div>
                         <br />
                         @if ($roleId != 0)
@@ -122,6 +90,39 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
                             <input wire:model="addPassword" type="password" class="form-control" placeholder="ລະຫັັດຜ່ານ" aria-label="Userphone" aria-describedby="basic-addon1">
+                        </div>
+                        <small class="form-text text-muted">
+                            <div class="text-danger">
+                                @error('addVillage')
+                                {{ $message }}
+                                @enderror
+                            </div>
+                        </small>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <input wire:model="addVillage" type="text" class="form-control" placeholder="ບ້ານ" aria-label="Userphone" aria-describedby="basic-addon1">
+                        </div>
+                        <small class="form-text text-muted">
+                            <div class="text-danger">
+                                @error('addDistrict')
+                                {{ $message }}
+                                @enderror
+                            </div>
+                        </small>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <input wire:model="addDistrict" type="text" class="form-control" placeholder="ເມືອງ" aria-label="Userphone" aria-describedby="basic-addon1">
+                        </div>
+                        <small class="form-text text-muted">
+                            <div class="text-danger">
+                                @error('addCity')
+                                {{ $message }}
+                                @enderror
+                            </div>
+                        </small>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <input wire:model="addCity" type="text" class="form-control" placeholder="ແຂວງ" aria-label="Userphone" aria-describedby="basic-addon1">
                         </div>
                         @endif
                         <!-- Avatar -->

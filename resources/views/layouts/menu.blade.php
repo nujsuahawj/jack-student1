@@ -8,17 +8,27 @@
                 </a>
             </li>
             <li class="nav-item">
-                @if (Request::is('users/*'))
-                <a class="nav-link active" href="/users" wire:navigate>
+                <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" href="/users" wire:navigate>
                     <span data-feather="users"></span>
-                    ຜູ້ໃຊ້
+                    ຜູ້ກ່ຽວຂ້ອງ
                 </a>
-                @else
-                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="/users" wire:navigate>
-                    <span data-feather="users"></span>
-                    ຜູ້ໃຊ້
-                </a>
-                @endif
+                <ul class="sub-menu">
+                    <li>
+                        <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" href="/users" wire:navigate>
+                            <i class="bi bi-person"></i> &nbsp;ຜູ້ໃຊ້
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-person-hearts"></i> &nbsp;ລູກຄ້າ
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-person-bounding-box"></i> &nbsp;ຜູ້ສະໜອງ
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="/categories" wire:navigate>

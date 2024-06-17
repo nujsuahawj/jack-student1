@@ -16,6 +16,7 @@ class Product extends Model
         'price_order',
         'price_sale',
         'qty',
+        'status', // 0: active, 1: inactive
         'category_name',
         'description',
         'created_at',

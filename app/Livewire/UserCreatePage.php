@@ -31,7 +31,7 @@ class UserCreatePage extends Component
     }
 
     // Method to add new user
-    public $addName, $addPhone, $Addavatar;
+    public $addName, $addPhone, $Addavatar, $addVillage, $addDistrict, $addCity;
     public function _createUserData()
     {
         $this->validate([
@@ -40,12 +40,18 @@ class UserCreatePage extends Component
             'addPassword' => 'required',
             'roleId' => 'required',
             'Addavatar' => 'required',
+            'addVillage' => 'required',
+            'addDistrict' => 'required',
+            'addCity' => 'required',
         ], [
             'addName.required' => 'ປ້ອນຊື່',
             'addPhone.required' => 'ປ້ອນເບີໂທ',
             'addPassword.required' => 'ປ້ອນລະຫັດຜ່ານ',
             'roleId.required' => 'ເລືອກສິດທິຜູ້ໃຊ້',
             'Addavatar.required' => 'ເລືອກຮູບພາບ',
+            'addVillage.required' => 'ປ້ອນບ້ານ',
+            'addDistrict.required' => 'ປ້ອນເມືອງ',
+            'addCity.required' => 'ປ້ອນແຂວງ',
         ]);
 
         // Upload image using Livewire
@@ -60,6 +66,9 @@ class UserCreatePage extends Component
         $data->password = bcrypt($this->addPassword);
         $data->role = $this->roleId;
         $data->avatar = $imageUrl;
+        $data->village = $this->addVillage;
+        $data->district = $this->addDistrict;
+        $data->city = $this->addCity;
         $data->save();
 
         // show a success sound

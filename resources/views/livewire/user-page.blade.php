@@ -10,15 +10,14 @@
             <div class="row gx-2 gy-2 mb-2">
                 <div class="col-4">
                     <div class="dropdown">
-                        <button style="border-radius: 30px;" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button style="border-radius: 30px;" class="btn btn-primary dropdown-toggle" type="button"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-funnel"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="#" wire:click='_funnel(0)'>ທັງໝົດ</a></li>
-                            <li><a class="dropdown-item" href="#" wire:click='_funnel(1)'>Admin</a></li>
-                            <li><a class="dropdown-item" href="#" wire:click='_funnel(2)'>Employee</a></li>
-                            <li><a class="dropdown-item" href="#" wire:click='_funnel(3)'>Supplier</a></li>
-                            <li><a class="dropdown-item" href="#" wire:click='_funnel(4)'>Customer</a></li>
+                            <li><a class="dropdown-item" href="#" wire:click='_funnel(1)'>ເຈົ້າຂອງຮ້ານ</a></li>
+                            <li><a class="dropdown-item" href="#" wire:click='_funnel(2)'>ພະນັກງານ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,10 +40,12 @@
                 <div class="card-header bg-white">
                     <!-- Search input -->
                     <div class="input-group">
-                        <span class="input-group-text" style="border: none;background-color: inherit;color: inherit;" id="search-icon">
+                        <span class="input-group-text" style="border: none;background-color: inherit;color: inherit;"
+                            id="search-icon">
                             <i class="bi bi-search"></i>
                         </span>
-                        <input wire:model.live='search' class="form-control form-control-dark" type="text" placeholder="ຊອກຫາຂໍ້ມູນ..." aria-label="Search" aria-describedby="search-icon">
+                        <input wire:model.live='search' class="form-control form-control-dark" type="text"
+                            placeholder="ຊອກຫາຂໍ້ມູນ..." aria-label="Search" aria-describedby="search-icon">
                     </div>
                 </div>
                 <div class="card-body">
@@ -53,7 +54,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">ຜູ້ໃຊ້</th>
-                                <th scope="col">ປະເພດ</th>
+                                <th scope="col">ສິດທິ</th>
+                                <th scope="col">ສະຖານະ</th>
                                 <th scope="col">ເບີໂທ</th>
                                 <th scope="col">ເວລາເພີ່ມ</th>
                                 <th scope="col">Action</th>
@@ -64,7 +66,8 @@
                             <tr>
                                 <!-- User data -->
                                 <td>
-                                    <img loading="lazy" src="{{ $item->avatar }}" class="img-thumbnail" alt="user" width="50" height="auto">
+                                    <img loading="lazy" src="{{ $item->avatar }}" class="img-thumbnail" alt="user"
+                                        width="50" height="auto">
                                     &nbsp; {{ $item->name }}
                                 </td>
                                 <td>
@@ -79,6 +82,12 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if($item->status == 1)
+                                    <span class="badge bg-success">Active</span>
+                                    @else
+                                    <span class="badge bg-danger">Inactive</span>
+                                    @endif
+                                <td>
                                     {{ $item->phone }}
                                 </td>
                                 <td>
@@ -90,7 +99,8 @@
                                         <i class="bi bi-pencil-square text-primary" style="cursor: pointer;"></i>
                                     </a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="#" wire:click="confirmClick" wire:confirm="ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນນີ້?"
+                                    <a href="#" wire:click="confirmClick({{ $item->id }})"
+                                        wire:confirm="ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນນີ້?"
                                         style="text-decoration: none; color: inherit;">
                                         <i class="bi bi-trash text-danger" style="cursor: pointer;"></i>
                                     </a>

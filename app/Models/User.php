@@ -22,7 +22,11 @@ class User extends Authenticatable
         'phone',
         'password',
         'role', // 1 = admin, 2 = employee, 3 = supplier, 4 = customer
+        'status', // 1 = active, 0 = inactive
         'avatar',
+        'village',
+        'district',
+        'city',
     ];
 
     /**

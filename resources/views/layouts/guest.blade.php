@@ -142,6 +142,10 @@
         }
 
         /* my css code here.. */
+        .sub-menu li {
+            color: white;
+        }
+
 
     </style>
 </head>
