@@ -162,6 +162,7 @@
 
             <div class="card h-100" style="margin-top: 0.5rem;">
                 <div class="gx-2 gy-2 d-flex pt-2" style="margin-left: 0.5rem;">
+                    <button wire:click='_nas(234986)' type="button" class="btn btn-primary btn-sm">bil-sale</button>
                     @if ($category == 0)
                     <button wire:click='_funnel(0)' type="button" class="btn btn-primary btn-sm">ທັງໝົດ</button>
                     @foreach ($categories as $item)
@@ -189,6 +190,9 @@
         </div>
     </div>
 
+    <!-- bill no set value -->
+    <input type="text" id="billNo" value="{{ $billNoSet }}">
+
 </div>
 <!--script -->
 <script>
@@ -204,6 +208,171 @@
     window.addEventListener('error', event => {
         // dispay sound false
         audioFalse.play();
+    });
+
+    window.addEventListener('bill-sale', event => {
+        // Get the bill number
+        const billNo = document.getElementById('billNo').value;
+        //alert('bill-sale' + billNo)
+        //fetch('http://127.0.0.1:8000/data.json')
+        fetch('http://127.0.0.1:8000/bill-sale/' + billNo)
+            .then(response => response.json())
+            .then(data => {
+                const {
+                    billNo
+                    , cmAddress
+                    , cmPhone
+                    , cmName
+                    , saleItem
+                    , total
+                } = data;
+
+                // Your existing code to use these variables
+                Swal.fire({
+                    title: "<strong>ຮ້ານບົວວັນກໍ່ສ້າງ</strong>"
+                    , icon: "success"
+                    , html: `
+    <style>
+        #invoice-POS {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 2mm;
+            border: 1px solid #ddd;
+            font-family: monospace;
+            font-size: 12px;
+            background: #fff;
+        }
+
+        #invoice-POS h2 {
+            font-size: 1.5em;
+            color: #222;
+        }
+
+        #invoice-POS p {
+            margin: 0;
+            padding: 0;
+        }
+
+        #invoice-POS .info {
+            margin: 10px 0;
+        }
+
+        #invoice-POS .info h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        #invoice-POS #top,
+        #invoice-POS #mid,
+        #invoice-POS #bot {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        #invoice-POS .tabletitle {
+            font-size: 0.7em;
+            background: #eee;
+            width: 100%;
+        }
+
+        #invoice-POS .service {
+            border-bottom: 1px solid #eee;
+        }
+
+        #invoice-POS .itemtext {
+            font-size: 0.7em;
+        }
+
+        #invoice-POS .legal {
+            font-size: 0.6em;
+            text-align: center;
+        }
+
+        #invoice-POS table {
+            width: 100%;
+        }
+
+        #invoice-POS td {
+            padding: 4px 0;
+        }
+
+    </style>
+    <div id="invoice-POS">
+        <center id="top">
+            <div class="info">
+                <h2>Bill: #${billNo}</h2>
+            </div>
+        </center>
+        <div id="mid">
+            <div class="info">
+                <h2>ຂໍ້ມູນລູກຄ້າ</h2>
+                <p>
+                    ${cmName}<br>
+                    ${cmPhone}<br>
+                    ${cmAddress}<br>
+                </p>
+            </div>
+        </div>
+        <div id="bot">
+            <div id="table">
+                <table>
+                    <tr class="tabletitle">
+                        <td class="item">
+                            <h2>ລາຍການສິນຄ້າ</h2>
+                        </td>
+                        <td class="Hours">
+                            <h2>ຈຳນວນ</h2>
+                        </td>
+                        <td class="Rate">
+                            <h2>ລາຄາ</h2>
+                        </td>
+                    </tr>
+                    ${saleItem.map(item => `
+                    <tr class="service">
+                        <td class="tableitem">
+                            <p class="itemtext">${item.name}</p>
+                        </td>
+                        <td class="tableitem">
+                            <p class="itemtext">${item.quantity}</p>
+                        </td>
+                        <td class="tableitem">
+                            <p class="itemtext">${(item.price)}₭</p>
+                        </td>
+                    </tr>
+                    `).join('')}
+                    <tr class="tabletitle">
+                        <td></td>
+                        <td class="Rate">
+                            <h2>ເປັນເງິນທັງໝົດ</h2>
+                        </td>
+                        <td class="payment">
+                            <h2>${total}₭</h2>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="legalcopy">
+                <p class="legal"><strong>ຂໍຂອບໃຈ!</strong></p>
+            </div>
+        </div>
+    </div>
+    `
+                    , showCloseButton: true
+                    , showCancelButton: false
+                    , focusConfirm: false
+                    , confirmButtonText: `
+    <i class="bi bi-printer"></i> Print
+    `
+                    , confirmButtonAriaLabel: "Print"
+                    , allowOutsideClick: false
+                    , preConfirm: () => {
+                        window.print();
+                        return false;
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
     });
 
 </script>

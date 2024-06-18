@@ -44,16 +44,16 @@ class SalePage extends Component
         }
 
         // right column
-        $categories = CategoryModel::limit(12)->get();
+        $categories = CategoryModel::where('status', 1)->limit(12)->get();
 
         if ($this->search) {
-            $products = ProductModel::where('qty', '>', 0)->where('name', 'like', '%' . $this->search . '%')->get();
+            $products = ProductModel::where('status', 0)->where('qty', '>', 0)->where('name', 'like', '%' . $this->search . '%')->get();
         } else {
             // check if category is set or not
             if ($this->category != 0) {
-                $products = ProductModel::where('qty', '>', 0)->where('category_name', $this->category)->get();
+                $products = ProductModel::where('status', 0)->where('qty', '>', 0)->where('category_name', $this->category)->get();
             } else {
-                $products = ProductModel::where('qty', '>', 0)->get();
+                $products = ProductModel::where('status', 0)->where('qty', '>', 0)->get();
             }
         }
 
@@ -93,17 +93,22 @@ class SalePage extends Component
 
         // reset search
         $this->reset('searchc');
+
+        // set Id for bill sale print
+        // get sale log by status
+        $saleLog = DB::table('sale_log')->where('status', 0)->first();
+        $this->_nas($saleLog->id);
         return redirect()->back();
     }
 
     // method to new route
     public function newroute()
     {
-        return $this->redirect('/', navigate: true);
+        return $this->redirect('/');
     }
     public function newrouteU()
     {
-        return $this->redirect('/users', navigate: true);
+        return $this->redirect('/users');
     }
 
     // Method to add sale log
@@ -293,8 +298,14 @@ class SalePage extends Component
             // toast message
             toastr()->success('ບັນທຶກການຂາຍສິນຄ້າສຳເລັດ');
 
+            // alert bill sale call Method
+            $this->_nas($saleLog->id);
+
+            // alert bill sale
+            $this->dispatch('bill-sale');
+
             // return back
-            return $this->redirect('/sales', navigate: true);
+            //return redirect()->back();
         } else {
             // toast sound
             $this->dispatch('error');
@@ -305,5 +316,13 @@ class SalePage extends Component
             // return back
             return redirect()->back();
         }
+    }
+
+    public $billNoSet;
+    public function _nas($id)
+    {
+        //set bill no
+        $this->billNoSet = $id;
+        return redirect()->back();
     }
 }

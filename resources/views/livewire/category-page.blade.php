@@ -67,6 +67,7 @@
                             <tr>
                                 <th scope="col">ປະເພດສິນຄ້າ</th>
                                 <th scope="col">ຈຳນວນສິນຄ້າ</th>
+                                <th scope="col">ສະຖານະ</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -78,13 +79,19 @@
                                     {{ $item->name }}
                                 </td>
                                 <td>
-                                    {{ $allProducts->where('category_name', $item->name)->count()}}
+                                    {{ $allProducts->where('category_name', $item->name)->count() }}
+                                </td>
+                                <td>
+                                    @if ($item->status == 1)
+                                    <span class="badge bg-success">Active</span>
+                                    @else
+                                    <span class="badge bg-danger">Inactive</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <i wire:click='_editeCategory({{ $item->id }})' class="bi bi-pencil-square text-primary" style="cursor: pointer;"></i>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a href="#" wire:click="confirmClick" wire:confirm="ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນນີ້?"
-                                        style="text-decoration: none; color: inherit;">
+                                    <a href="#" wire:click="confirmClick({{ $item->id }})" wire:confirm="ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລົບຂໍ້ມູນນີ້?" style="text-decoration: none; color: inherit;">
                                         <i class="bi bi-trash text-danger"></i>
                                     </a>
                                 </td>

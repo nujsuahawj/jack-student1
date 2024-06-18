@@ -29,7 +29,7 @@ class ProductPage extends Component
                 $productList = ProductModel::orderBy('updated_at', 'desc')->paginate(10);
             }
         }
-        $getAllCategory = CategoryModel::all();
+        $getAllCategory = CategoryModel::where('status', 1)->get();
 
         return view('livewire.product-page', ['productList' => $productList, 'getAllCategory' => $getAllCategory]);
     }
@@ -42,8 +42,16 @@ class ProductPage extends Component
     }
 
     // Method to delete user data
-    public function confirmClick()
+    public function confirmClick($id)
     {
+        // find the product by id, check if status is 1 set it to 0, else set it to 1
+        $product = ProductModel::find($id);
+        if ($product->status == 1) {
+            $product->status = 0;
+        } else {
+            $product->status = 1;
+        }
+        $product->save();
         toastr()->success('ລົບຂໍ້ມູນສຳເລັດແລ້ວ');
         $this->dispatch('success');
         return redirect()->back();

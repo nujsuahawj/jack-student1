@@ -99,7 +99,7 @@
                             </div>
                         </small>
                         <div class="input-group mb-3">
-                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <span class="input-group-text bg-white"><i class="bi bi-list-ul"></i></span>
                             <input wire:model="addVillage" type="text" class="form-control" placeholder="ບ້ານ" aria-label="Userphone" aria-describedby="basic-addon1">
                         </div>
                         <small class="form-text text-muted">
@@ -110,7 +110,7 @@
                             </div>
                         </small>
                         <div class="input-group mb-3">
-                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <span class="input-group-text bg-white"><i class="bi bi-list-ul"></i></span>
                             <input wire:model="addDistrict" type="text" class="form-control" placeholder="ເມືອງ" aria-label="Userphone" aria-describedby="basic-addon1">
                         </div>
                         <small class="form-text text-muted">
@@ -121,7 +121,7 @@
                             </div>
                         </small>
                         <div class="input-group mb-3">
-                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <span class="input-group-text bg-white"><i class="bi bi-list-ul"></i></span>
                             <input wire:model="addCity" type="text" class="form-control" placeholder="ແຂວງ" aria-label="Userphone" aria-describedby="basic-addon1">
                         </div>
                         @endif

@@ -98,8 +98,28 @@ class CategoryPage extends Component
     }
 
     // Method to delete category data
-    public function confirmClick()
+    public function confirmClick($id)
     {
+        // check if status =1 set to 0 if status = 0 set to 1
+        $category = ModelsCategory::find($id);
+        if ($category->status == 1) {
+            $category->status = 0;
+        } else {
+            $category->status = 1;
+        }
+        $category->save();
+
+        // set all products to inactive by category id
+        $products = ModelProduct::where('category_name', $category->name)->get();
+        foreach ($products as $product) {
+            if ($category->status == 1) {
+                $product->status = 0;
+            } else {
+                $product->status = 1;
+            }
+            $product->save();
+        }
+
         toastr()->success('ລົບຂໍ້ມູນສຳເລັດແລ້ວ');
         $this->dispatch('success');
         return redirect()->back();

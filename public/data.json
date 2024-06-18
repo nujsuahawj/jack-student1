@@ -1,0 +1,19 @@
+{
+    "billNo": 252565,
+    "cmAddress": "street city, state 0000",
+    "cmPhone": "555-555-5555",
+    "cmName": "Customer Name",
+    "saleItem": [
+        {
+            "name": "Product 1",
+            "quantity": 5,
+            "price": 375
+        },
+        {
+            "name": "Product 2",
+            "quantity": 3,
+            "price": 225
+        }
+    ],
+    "total": "3,644.25"
+}
