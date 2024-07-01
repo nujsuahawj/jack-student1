@@ -77,7 +77,7 @@
                                     {{ $item->id }}
                                 </td>
                                 <td>
-                                    <span class="badge bg-info">{{ $item->name }}</span>
+                                    <span class="badge bg-info">{{ $item->category_name }}</span>
                                 </td>
                                 <td>
                                     {{ number_format($item->price_order) }} ₭

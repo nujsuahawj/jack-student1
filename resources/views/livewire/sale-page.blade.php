@@ -162,7 +162,7 @@
 
             <div class="card h-100" style="margin-top: 0.5rem;">
                 <div class="gx-2 gy-2 d-flex pt-2" style="margin-left: 0.5rem;">
-                    <button wire:click='_nas(234986)' type="button" class="btn btn-primary btn-sm">bil-sale</button>
+                    {{-- <button wire:click='_nas(234986)' type="button" class="btn btn-primary btn-sm">bil-sale</button> --}}
                     @if ($category == 0)
                     <button wire:click='_funnel(0)' type="button" class="btn btn-primary btn-sm">ທັງໝົດ</button>
                     @foreach ($categories as $item)
