@@ -38,25 +38,25 @@ class CustomerCreatePage extends Component
     public $addName, $addPhone, $Addavatar, $addVillage, $addDistrict, $addCity;
     public function _createUserData()
     {
-        $this->validate([
-            'addName' => 'required',
-            'addPhone' => 'required',
-            'addPassword' => 'required',
-            'roleId' => 'required',
-            'Addavatar' => 'required',
-            'addVillage' => 'required',
-            'addDistrict' => 'required',
-            'addCity' => 'required',
-        ], [
-            'addName.required' => 'ປ້ອນຊື່',
-            'addPhone.required' => 'ປ້ອນເບີໂທ',
-            'addPassword.required' => 'ປ້ອນລະຫັດຜ່ານ',
-            'roleId.required' => 'ເລືອກສິດທິຜູ້ໃຊ້',
-            'Addavatar.required' => 'ເລືອກຮູບພາບ',
-            'addVillage.required' => 'ປ້ອນບ້ານ',
-            'addDistrict.required' => 'ປ້ອນເມືອງ',
-            'addCity.required' => 'ປ້ອນແຂວງ',
-        ]);
+        // $this->validate([
+        //     'addName' => 'required',
+        //     'addPhone' => 'required',
+        //     'addPassword' => 'required',
+        //     'roleId' => 'required',
+        //     'Addavatar' => 'required',
+        //     'addVillage' => 'required',
+        //     'addDistrict' => 'required',
+        //     'addCity' => 'required',
+        // ], [
+        //     'addName.required' => 'ປ້ອນຊື່',
+        //     'addPhone.required' => 'ປ້ອນເບີໂທ',
+        //     'addPassword.required' => 'ປ້ອນລະຫັດຜ່ານ',
+        //     'roleId.required' => 'ເລືອກສິດທິຜູ້ໃຊ້',
+        //     'Addavatar.required' => 'ເລືອກຮູບພາບ',
+        //     'addVillage.required' => 'ປ້ອນບ້ານ',
+        //     'addDistrict.required' => 'ປ້ອນເມືອງ',
+        //     'addCity.required' => 'ປ້ອນແຂວງ',
+        // ]);
 
         // Upload image using Livewire
         $imageName = $this->Addavatar->store('images', 'public');

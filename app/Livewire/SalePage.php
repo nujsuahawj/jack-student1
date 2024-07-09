@@ -108,7 +108,7 @@ class SalePage extends Component
     }
     public function newrouteU()
     {
-        return $this->redirect('/users');
+        return $this->redirect('/customers');
     }
 
     // Method to add sale log
