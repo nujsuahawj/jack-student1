@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="col-8">
-                            <a href="#" class="btn btn-primary" style="border-radius: 30px;">
+                            <a wire:click='generateSalePDF' href="#" class="btn btn-primary" style="border-radius: 30px;">
                                 <i class="bi bi-file-spreadsheet"></i>
                                 &nbsp;Export<span>...</span>
                             </a>
@@ -180,7 +180,7 @@
                             </div>
                         </div>
                         <div class="col-8">
-                            <a href="#" class="btn btn-primary" style="border-radius: 30px;">
+                            <a wire:click='generateOrderPDF' href="#" class="btn btn-primary" style="border-radius: 30px;">
                                 <i class="bi bi-file-spreadsheet"></i>
                                 &nbsp;Export<span>...</span>
                             </a>
@@ -271,7 +271,7 @@
                             </div>
                         </div>
                         <div class="col-8">
-                            <a href="#" class="btn btn-primary" style="border-radius: 30px;">
+                            <a wire:click='generateProductPDF' href="#" class="btn btn-primary" style="border-radius: 30px;">
                                 <i class="bi bi-file-spreadsheet"></i>
                                 &nbsp;Export<span>...</span>
                             </a>
